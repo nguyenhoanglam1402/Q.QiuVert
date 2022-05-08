@@ -53,6 +53,7 @@ public class CharacterController : MonoBehaviour
     float targetAngle = Mathf.Atan2(_axisX, _axisZ) * Mathf.Rad2Deg + mainCameraTransform.eulerAngles.y;
     float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref _turnSmoothVelocity, _turnSmoothTime);
     return Tuple.Create(targetAngle, angle);
+
   }
 
 
