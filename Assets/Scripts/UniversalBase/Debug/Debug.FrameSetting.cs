@@ -2,29 +2,31 @@ using UnityEditor;
 using UnityEngine;
 using System.Text.RegularExpressions;
 
+
 namespace QiQiuVert
 {
-  public partial class Debug : EditorWindow
+  public class DebugFrameSetting : EditorWindow
   {
     int fps = 0;
-    [MenuItem("Helper/Frame Setting")]
+    [MenuItem("EditorTool/Frame Setting")]
     static void ShowFrameSettingWindow()
     {
-      var window = GetWindow<Debug>("System Setting");
-      window.Show();
+      var window = GetWindow<DebugFrameSetting>("System Setting");
+      window?.Show();
     }
 
     void OnGUI()
     {
       GUILayout.Label("Graphic Settings", EditorStyles.boldLabel);
-      GUILayout.BeginHorizontal("IntField");
+      GUILayout.BeginHorizontal();
       fps = EditorGUILayout.IntField("FPS", fps);
       if (GUILayout.Button("Save", GUILayout.Width(50)))
       {
         SystemHelper.SetFrameLimit(fps);
-        UnityEngine.Debug.Log(fps);
+        UnityEngine.Debug.Log($"Setting {fps} FPS have been saved!");
       }
       GUILayout.EndHorizontal();
+
     }
   }
 }
