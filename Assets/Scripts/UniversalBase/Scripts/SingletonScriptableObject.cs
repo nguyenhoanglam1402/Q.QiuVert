@@ -14,6 +14,7 @@ public abstract class SingletonScriptableObject<T> : ScriptableObject where T : 
         instance = Resources.Load<T>(typeof(T).ToString());
         (instance as SingletonScriptableObject<T>).OnInitialize();
       }
+
       return instance;
     }
   }
